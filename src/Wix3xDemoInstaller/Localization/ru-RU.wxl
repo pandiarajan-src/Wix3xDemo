@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="ru-RU" xmlns="http://schemas.microsoft.com/wix/2006/localization"  >
+ <String Id='LANG' Overridable="yes">1049</String>
+<!-- {WIXCONTENT} -->
+  <String Id="LaunchCondition_Error.NET4.0" Overridable="yes">Для данного приложения требуется .NET Framework 4.0. Установите .NET Framework и снова запустите программу установки.</String>
+
+  <String Id="LaunchCondition_Error.NET4.5.1" Overridable="yes">Для данного приложения требуется .NET Framework 4.5.1. Установите .NET Framework и снова запустите программу установки.</String>
+
+  <String Id="LaunchCondition_Error64" Overridable="yes">Попытка запуска 32-разрядной программы установки в 64-разрядной версии Windows. Программа установки будет закрыта.</String>
+
+  <String Id="LaunchCondition_ErrorNewerVersionExists" Overridable="yes">[ProductName]: новая или текущая версия уже установлена. Программа установки будет закрыта.</String>
+
+  <String Id="UnInstall_Conditional_Message" Overridable="yes">При деинсталляции этого компонента будут удалены все драйверы [ProductName]. Продолжить?</String>
+
+
+</WixLocalization>

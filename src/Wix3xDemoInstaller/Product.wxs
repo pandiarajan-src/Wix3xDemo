@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Config.wxi ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+          xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<Product Id="*" Name="$(var.msiProductName)" Language="!(loc.LANG)" Version="$(var.Version)" Manufacturer="$(var.CompanyName)" UpgradeCode="$(var.UpgradeCode)">
+		<Package Keywords="$(var.msiPackageComments)" Languages="!(loc.LANG)" Platform="x64"
+             Description="$(var.msiProductName)" Comments="$(var.msiPackageComments)" Manufacturer="$(var.CompanyName)"
+             InstallerVersion="200" Compressed="yes" InstallScope="perMachine"/>
+
+    <!--To tell about whether upgrades are allowed or not-->
+    <MajorUpgrade AllowDowngrades="no" DowngradeErrorMessage="!(loc.LaunchCondition_ErrorNewerVersionExists)" Schedule="afterInstallValidate"/>
+
+    <!--Check wheather .Net 4.5.2 or greater is installed and VC14.0 is installed, if not don't continue the setup-->
+    <?define NetFx452RedistLink = http://go.microsoft.com/fwlink/?LinkId=397708 ?>
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_451_OR_LATER_INSTALLED"/>
+
+    <Condition Message="!(loc.LaunchCondition_Error.NET4.5.1)">
+      <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_451_OR_LATER_INSTALLED]]>
+    </Condition>
+    
+     <!--If the installer build is x86 installed in x64 machine, throuw an error message-->
+    <?if $(var.Platform)=x86 ?>
+    <Condition Message="!(loc.LaunchCondition_Error64)">
+      <![CDATA[Not VersionNT64]]>
+    </Condition>
+    <?endif ?>
+
+    <!--If the same or newer version of the same installer is installed, then throw an error message-->
+    <Condition Message="!(loc.LaunchCondition_ErrorNewerVersionExists)">
+      NOT NEWERVERSIONDETECTED OR Installed
+    </Condition>
+
+    <!--if embedcab tag is set to no a separate cab file is creates else it is embedded into the .msi package -->
+    <Media Id="1" Cabinet="Wix3xDemoInstaller.cab" EmbedCab="yes" />    
+    
+		<Feature Id="ProductFeature" Title="Wix3xDemoInstaller" Level="1">
+      <ComponentGroupRef Id="ApplicationComponentsGroup"/>
+      <ComponentGroupRef Id="MSRedistComponentGroup"/>
+      <ComponentRef Id="WIX3X_Shortcut" />
+      <ComponentRef Id="WIX3X_Machine_Registry" />      
+    </Feature>
+
+    <!--UI setup resource and dialog screens will be present-->
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\Wide_493x58.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="Resources\Tall_493x312.bmp" />
+
+    <Property Id="WIXUI_INSTALLDIR" Value="APPINSTALLDIR" />
+    <Property Id="WixShellExecTarget" Value="[#FIL027D083BC1154F06A1F3611F26B78178]" />
+    <Property Id="WIX_Custom_UnInstallMessage" Value="!(loc.UnInstall_Conditional_Message)" />
+    <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="no"/>
+
+    <UI>
+      <!--Show Install Directory sequence built in WIX-->
+      <TextStyle Id="WixUI_Font_White_Small" FaceName="Tahoma" Size="7" Red="255" Green="255" Blue="255" />
+      <TextStyle Id="WixUI_Font_White_Normal" FaceName="Tahoma" Size="8" Red="255" Green="255" Blue="255" />
+      <TextStyle Id="WixUI_Font_White_Title" FaceName="Tahoma" Size="9" Red="255" Green="255" Blue="255" Bold="yes" />
+
+      <UIRef Id="WixUI_InstallDir" />
+      <!--It helps to avoid installation location selection dialog-->
+      <Publish Dialog="LicenseAgreementDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="2">1</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="LicenseAgreementDlg" Order="2">1</Publish>
+      <!--Launches the Application at the end of the installation-->
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">NOT Installed</Publish>
+    </UI>
+  </Product>
+
+  <Fragment>
+    <!--Start of Install directory structure in ProgramFiles-->
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="$(var.PlatformProgramFilesFolder)">
+        <Directory Id="INSTALLFOLDER" Name="$(var.CompanyShortName)">
+          <Directory Id="APPINSTALLDIR" Name="$(var.msiProductName)" >
+            <Directory Id="REDISTDIR" Name="Redistributables" />
+            <Directory Id="RUNTIMEFOLDER" Name="runtimes">
+              <Directory Id="WIN64FOLDER" Name="win-x64">
+                <Directory Id="WIN64NATIVE" Name="native">
+                  <Directory Id="WIN64NETSTD" Name="netstandard2.0" />
+                </Directory>
+              </Directory>
+              <Directory Id="WIN32FOLDER" Name="win-x86">
+                <Directory Id="WIN32NATIVE" Name="native">
+                  <Directory Id="WIN32NETSTD" Name="netstandard2.0" />
+                </Directory>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+			</Directory>
+      <!--End of Install directory structure in ProgramFiles-->
+
+      <!--Start of Application Shortcut-->
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="StartMenuShortcut" Name="$(var.CompanyShortName)"/>
+      </Directory>
+      <!--End of Application Shortcut-->      
+		</Directory>
+	</Fragment>
+ 
+</Wix>

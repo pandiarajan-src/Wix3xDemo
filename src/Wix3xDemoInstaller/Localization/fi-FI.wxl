@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="fi-FI" xmlns="http://schemas.microsoft.com/wix/2006/localization"  >
+ <String Id='LANG' Overridable="yes">1035</String>
+<!-- {WIXCONTENT} -->
+  <String Id="LaunchCondition_Error.NET4.0" Overridable="yes">Tämä sovellus vaatii .NET Framework 4.0:n.  Asenna .NET Framework ja suorita asennusohjelma uudelleen.</String>
+
+  <String Id="LaunchCondition_Error.NET4.5.1" Overridable="yes">Tämä sovellus vaatii .NET Framework 4.5.1:n.  Asenna .NET Framework ja suorita asennusohjelma uudelleen.</String>
+
+  <String Id="LaunchCondition_Error64" Overridable="yes">Yrität käyttää 32-bittistä asennusohjelmaa 64-bittisessä Windowsissa.  Asennusohjelma suljetaan.</String>
+
+  <String Id="LaunchCondition_ErrorNewerVersionExists" Overridable="yes">Uudempi tai nykyinen [ProductName] -versio on jo asennettu. Asennus lopetetaan.</String>
+
+  <String Id="UnInstall_Conditional_Message" Overridable="yes">Tämän komponentin asennuksen poistaminen poistaa kaikki tuotteeseen [ProductName] liittyvät ajurit. Haluatko jatkaa?</String>
+
+
+</WixLocalization>

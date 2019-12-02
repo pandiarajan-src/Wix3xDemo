@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="zh-CN" xmlns="http://schemas.microsoft.com/wix/2006/localization" Codepage='936'>
+ <String Id='LANG' Overridable="yes">2052</String>
+<!-- {WIXCONTENT} -->
+  <String Id="LaunchCondition_Error.NET4.0" Overridable="yes">此应用程序需要 .NET Framework 4.0。请安装 .NET Framework，然后再次运行此安装程序。</String>
+
+  <String Id="LaunchCondition_Error.NET4.5.1" Overridable="yes">此应用程序需要 .NET Framework 4.5.1。请安装 .NET Framework，然后再次运行此安装程序。</String>
+
+  <String Id="LaunchCondition_Error64" Overridable="yes">您正在尝试在 64 位版本的 Windows 上运行 32 位安装程序。将立即退出此安装程序。</String>
+
+  <String Id="LaunchCondition_ErrorNewerVersionExists" Overridable="yes">已安装了较新或当前版本的 [ProductName]。将立即退出安装程序。</String>
+
+  <String Id="UnInstall_Conditional_Message" Overridable="yes">卸载此组件将删除与 [ProductName] 关联的所有驱动程序。是否要继续？</String>
+
+
+</WixLocalization>

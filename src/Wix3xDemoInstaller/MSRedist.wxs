@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="REDISTDIR" />
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="MSRedistComponentGroup">
+            <Component Id="cmpB093F499FADCAECC7D6C99FFFEB97A7F" Directory="REDISTDIR" Guid="*">
+                <File Id="fil0FC0F963EFD771F333B968DCF927DD3A" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-core-timezone-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmp254D12F6420D74BDAAE56AEB844FC5AC" Directory="REDISTDIR" Guid="*">
+                <File Id="fil7B26D428D6C08922266F65DF05891505" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-core-util-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmp15A4FCA29C551BDCB5AE3E3D469F54EA" Directory="REDISTDIR" Guid="*">
+                <File Id="fil69E8D5A61061AB2588F39DAF32E477A1" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-crt-conio-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmp48533B33F4259AF26AD65B0FAEC47734" Directory="REDISTDIR" Guid="*">
+                <File Id="filA1D89736E2E12778F672ED361404300E" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-crt-environment-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmp704FCAF70382DA262BB0A9D697D1D657" Directory="REDISTDIR" Guid="*">
+                <File Id="filB3F6A6FEF9FA7FC32568C2A3985B08C4" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-crt-filesystem-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmpAFE5CDD05F1FF752C5FE320DB8CDCD29" Directory="REDISTDIR" Guid="*">
+                <File Id="fil40AB35820F295BDDE981EB3621C49519" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-crt-heap-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmpE0D17D1EE3C711C69741A63F88E06669" Directory="REDISTDIR" Guid="*">
+                <File Id="fil8D676DD2FFFAEE860EF7D1CB0DF1B084" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-crt-locale-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmp80344B4526897AC20471E53C948BA184" Directory="REDISTDIR" Guid="*">
+                <File Id="fil6910BFECAF995DECA736885D73CC868F" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-crt-math-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmp2C83F90A8012B8FB636EB1C4BF1A9E8C" Directory="REDISTDIR" Guid="*">
+                <File Id="filAB45281E0A612C967CC69502E6CE66A3" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-crt-stdio-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmp4D5FFBCFCEC6F2D92168C654B3F2B1DF" Directory="REDISTDIR" Guid="*">
+                <File Id="fil2FD6D74A49CF2B7CCD79FD6387360582" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-crt-string-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmp62EB99E863691874E3B8EC37D616C332" Directory="REDISTDIR" Guid="*">
+                <File Id="fil4016C749CE5CBDF75DF652E9F47829FC" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-crt-time-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmpA6A1DA7CBC78FC265FE16D36F858F73A" Directory="REDISTDIR" Guid="*">
+                <File Id="filE6E073E554A1BA29E6261300E661C412" KeyPath="yes" Source="$(var.RedistPath)\api-ms-win-crt-utility-l1-1-0.dll" />
+            </Component>
+            <Component Id="cmpE5FB971D20F2F39EEB3C697A068D66BF" Directory="REDISTDIR" Guid="*">
+                <File Id="filC88AC86038A2EB23B888153F5775D60E" KeyPath="yes" Source="$(var.RedistPath)\ucrtbase.dll" />
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>

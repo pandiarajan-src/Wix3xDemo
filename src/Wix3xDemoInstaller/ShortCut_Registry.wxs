@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Config.wxi ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <!--To define Icons, Shortcuts, Registries and other items-->
+	<Fragment>
+    <!--Define Icons-->
+    <Icon Id="WIX3X_ICON" SourceFile="Resources\favicon.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="WIX3X_ICON" />
+    
+    <!--Creating Shortcut for the application exe-->
+    <Component Id="WIX3X_Shortcut" Guid="1C2C8800-9800-4BCC-9774-32DC877D5906" Directory="StartMenuShortcut">
+      <Shortcut Id="WIX3X_Start_Menu_Shortcut" Name="$(var.msiProductName)" Description="$(var.msiProductName)" Directory="StartMenuShortcut"
+                    Target="[#FIL027D083BC1154F06A1F3611F26B78178]" WorkingDirectory="APPINSTALLDIR" Icon="WIX3X_ICON"/>
+      <RemoveFile Id="WIX3X_Remove_Shortcut" Name="$(var.msiProductName)" On="uninstall" Directory="StartMenuShortcut"/>
+      <RemoveFolder Id="StartMenuShortcut" On="uninstall"/>
+      <RegistryValue Root="HKCU" Key="Software\$(var.CompanyShortName)\$(var.msiProductName)" Name="ShortcutInstall" Type="integer" Value="1" KeyPath="yes"/>
+    </Component>
+
+    <!--Creating Registry entry-->
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="WIX3X_Machine_Registry" Guid="BFD3A4F2-AA8F-4393-B11B-959896834904">
+        <RegistryKey Root="HKLM" Key="Software\$(var.CompanyShortName)\$(var.msiProductName)" >
+          <RegistryValue Name="WPFExecutable" Type="string" Value="[APPINSTALLDIR]Wix3xDemoWPF.exe"/>
+          <RegistryValue Name="Version" Type="string" Value="$(var.Version)"/>
+          <RegistryValue Name="RedistInstalled" Type="string" Value="no"/>
+          <RegistryValue Name="installed" Type="integer" Value="1"/>
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+    
+	</Fragment>
+</Wix>

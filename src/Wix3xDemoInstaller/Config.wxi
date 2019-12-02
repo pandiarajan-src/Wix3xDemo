@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?define Version="7.4.1.3"?>
+  
+  <?define UpgradeCode="1c1a21bb-2f27-4944-8700-2fae2e1b4a36" ?>
+  <?define msiProductName="Wix3xDemoInstaller" ?>
+  <?define msiPackageComments="WIX 3X Demo Comments" ?>
+  <?define CompanyName="WIX 3X Demo Corp" ?>
+  <?define CompanyShortName="Wix3X" ?>
+  <?define ProductShortName="Wix3XDemo" ?>
+  <?define codepage="!(loc.LANG)"?>
+
+  <?if $(var.Platform) = x64 ?>
+      <?define msiProductId = "70CF4F83-BC77-442F-80BA-53C4A980CC18" ?>
+      <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+      <?define PlatformSystemFolder = "System64Folder" ?>
+      <?define PlatformShortCode = "x64" ?>
+      <?define Win64="yes" ?>
+  <?else ?>
+      <?define msiProductId = "87238D72-9EBA-4303-9FF7-FEC1ABFD6A77" ?>
+      <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+      <?define PlatformSystemFolder = "SystemFolder" ?>
+      <?define PlatformShortCode = "x86" ?>
+      <?define Win64="no" ?>
+  <?endif ?>
+  
+  <?define InstallStagingDir="$(var.StagingDir)" ?>
+  
+</Include>

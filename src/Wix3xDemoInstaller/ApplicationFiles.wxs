@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include Config.wxi ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <ComponentGroup Id="ApplicationComponentsGroup">
+      <!--This group is to install all the scan application related itmes-->
+      <Component Win64="$(var.Win64)" Id="ApplicationComponents" Directory="APPINSTALLDIR" Guid="B3ED9675-2A6B-4EB9-8094-A56DA2F293DA">
+        <File Id="FILD274497F0CAE4D6EB0B833E818D5C7F3"  Source="$(var.InstallStagingDir)\System.Data.SQLite.dll" />
+        <File Id="FIL73CBD4FE1AD84191BB8F8893A72D3FF3"  Source="$(var.InstallStagingDir)\Wix3xDemoLib.dll" />
+        <File Id="FILCF5685F341D34C42A136CF0DE49640A5"  Source="$(var.InstallStagingDir)\Wix3xDemoConsole.dll" />
+        <File Id="FILDAA8499943E748E6B6A07BBF810906FC"  Source="$(var.InstallStagingDir)\Wix3xDemoWPF.dll" />
+        <File Id="FIL10A6AB86B0344438A266A1E24AA9058B"  Source="$(var.InstallStagingDir)\Wix3xDemoConsole.exe" />
+        <File Id="FIL027D083BC1154F06A1F3611F26B78178"  Source="$(var.InstallStagingDir)\Wix3xDemoWPF.exe" />
+        <File Id="FILC3F938AFC2394B65ABDD122C101C2112"  Source="$(var.InstallStagingDir)\wix3xdemodb.db" />
+        <File Id="FIL98B8F44E1E1E4A83B0A8CFAA5C2CEDF2"  Source="$(var.InstallStagingDir)\Wix3xDemoLib.deps.json" />
+        <File Id="FILA9184D9872FB4F9384B20602F5A89832"  Source="$(var.InstallStagingDir)\Wix3xDemoWPF.deps.json" />
+        <File Id="FIL70CAC86179314F10A010351D0DCD327D"  Source="$(var.InstallStagingDir)\Wix3xDemoConsole.deps.json" />
+        <File Id="FIL7F2E848F9CDE47C1BFF7B2C38B8C53B6"  Source="$(var.InstallStagingDir)\Wix3xDemoWPF.runtimeconfig.json" />
+        <File Id="FIL454BFCBC50FB47FFB1185589C37CE0A3"  Source="$(var.InstallStagingDir)\Wix3xDemoConsole.runtimeconfig.json" />
+        <File Id="FILA8B78D72A64249E9986441F40D74DA27"  Source="$(var.InstallStagingDir)\Wix3xDemoWPF.runtimeconfig.dev.json" />
+        <File Id="FILB5D0EC1E13E54F9696697053F07070E9"  Source="$(var.InstallStagingDir)\Wix3xDemoConsole.runtimeconfig.dev.json" />
+      </Component>
+
+      <Component Win64="$(var.Win64)" Id="x64RuntimeComponents" Directory="WIN64NETSTD" Guid="87238D729EBA43039FF7FEC1ABFD6A77">
+        <File Id="FIL1C2C880098004BCC977432DC877D5906"  Source="$(var.InstallStagingDir)\runtimes\win-x64\native\netstandard2.0\SQLite.Interop.dll" />
+      </Component>
+
+      <Component Win64="$(var.Win64)" Id="x86RuntimeComponents" Directory="WIN32NETSTD" Guid="70CF4F83BC77442F80BA53C4A980CC18">
+        <File Id="FILBFD3A4F2AA8F4393B11B959896834904"  Source="$(var.InstallStagingDir)\runtimes\win-x86\native\netstandard2.0\SQLite.Interop.dll" />
+      </Component>
+
+    </ComponentGroup>
+	</Fragment>
+</Wix>

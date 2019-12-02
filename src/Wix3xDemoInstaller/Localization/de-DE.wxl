@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="de-DE" xmlns="http://schemas.microsoft.com/wix/2006/localization"  >
+ <String Id='LANG' Overridable="yes">1031</String>
+<!-- {WIXCONTENT} -->
+  <String Id="LaunchCondition_Error.NET4.0" Overridable="yes">Für diese Anwendung ist .NET Framework 4.0 erforderlich. .NET Framework installieren und Installationsprogramm anschließend erneut ausführen.</String>
+
+  <String Id="LaunchCondition_Error.NET4.5.1" Overridable="yes">Für diese Anwendung ist .NET Framework 4.5.1 erforderlich. .NET Framework installieren und Installationsprogramm anschließend erneut ausführen.</String>
+
+  <String Id="LaunchCondition_Error64" Overridable="yes">Es wird versucht, das 32-Bit-Installationsprogramm unter einer 64-Bit-Version von Windows auszuführen. Das Installationsprogramm wird beendet.</String>
+
+  <String Id="LaunchCondition_ErrorNewerVersionExists" Overridable="yes">Eine neuere Version von [ProductName] ist bereits installiert. Einrichtung wird beendet.</String>
+
+  <String Id="UnInstall_Conditional_Message" Overridable="yes">Beim Deinstallieren dieser Komponente werden alle mit [ProductName] verknüpften Treiber entfernt. Fortfahren?</String>
+
+
+</WixLocalization>

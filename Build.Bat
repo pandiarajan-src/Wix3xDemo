@@ -4,7 +4,7 @@ REM of the batch file, %~d0 is the drive letter only, and %~dp0 is the drive let
 cd /d %~dp0
 
 REM Setup project and DDK folder locations and start the IDE
-CALL DEFAULT.BAT
+CALL ENV.BAT
 
 SET BUILD_STATUS=0
 SET ReleaseConfig=Release
@@ -21,7 +21,7 @@ IF NOT "%1"=="" (
 		echo "-Debug           Do Debug build"
 		echo "-Release         Do Release build"
 		echo --------------------------------------------------------------------------------
-		exit 0
+		GOTO :END
 	)
     SHIFT
     GOTO :loop	

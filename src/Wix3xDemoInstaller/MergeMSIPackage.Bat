@@ -2,7 +2,7 @@
 REM ECHO Merging multiple lanague MSI files into single MSI files
 
 REM Setup project and DDK folder locations and start the IDE
-CALL ..\..\Default.BAT
+CALL ..\..\ENV.BAT
 
 SET MSIPlatform=%1
 SET MSIConfig=%2
@@ -25,9 +25,6 @@ ECHO "==========================================================================
 ECHO "===For en-US 1033==="
 
 @"%WIXPATH%\light.exe" -out "%MSIEnglishPath%\%MSIFileName%_en-US.msi" -cultures:en-US -ext "%WIXPATH%\WixUtilExtension.dll" -ext "%WIXPATH%\WixUIExtension.dll" -ext "%WIXPATH%\WixNetFxExtension.dll" -loc "%MSILocalizationPath%\en-US.wxl" -wixprojectfile "%MSIProjectPath%\Wix3xDemoInstaller.wixproj" -fv -sice:ICE91 -sw1076 -dWixUILicenseRtf="%MSIEULAPath%\CommonEULA-en-US.rtf" %MSIWixObjFilePath%\ApplicationFiles.wixobj %MSIWixObjFilePath%\MSRedist.wixobj %MSIWixObjFilePath%\Product.wixobj %MSIWixObjFilePath%\ShortCut_Registry.wixobj 
-
-REM Update Banner Title and subtitle font and color
-@C:\Windows\System32\cscript.exe "%MSIProjectPath%\CustomWix.js" "%MSIEnglishPath%\%MSIFileName%_en-US.msi" en-US
 
 ECHO "Copying english file to dest file"
 @COPY "%MSIEnglishPath%\%MSIFileName%_en-US.msi" "%MSIReleasePath%\%MSIFileName%_MUI.msi"
